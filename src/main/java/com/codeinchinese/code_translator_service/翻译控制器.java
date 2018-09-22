@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codeinchinese.code_translator_service.模型.翻译;
-import com.codeinchinese.java源码翻译.翻译Java代码;
+import com.codeinchinese.java.源码翻译.翻译Java代码;
 
 @RestController
 public class 翻译控制器 {
@@ -23,6 +23,6 @@ public class 翻译控制器 {
   @ResponseBody
   public 翻译 翻译(@RequestParam(name = "code", required = false, defaultValue = "") String 英文源码) {
     笔录.info("输入: " + 英文源码);
-    return new 翻译(翻译Java代码.汉化源码结构(英文源码));
+    return new 翻译(翻译Java代码.翻译源码结构(英文源码));
   }
 }
