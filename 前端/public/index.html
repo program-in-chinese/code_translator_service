@@ -6,19 +6,50 @@
 <meta charset="UTF-8">
 <title>源代码翻译</title>
 <link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="lib/codemirror.css">
+<script src="lib/codemirror.js"></script>
+<script src="mode/clike/clike.js"></script>
+<style type="text/css">
+.CodeMirror {
+	border: 1px solid black;
+}
+</style>
+
 <script src="翻译.js"></script>
 </head>
 
 <body>
+	<span>请在左侧输入英文源代码, 暂时仅支持Java</span>
 	<div>
-		<textarea id="英文源码输入" placeholder="请输入英文源码, 暂时仅支持Java" rows="40"
-			cols="60"></textarea>
-		<textarea id="对应中文源码" rows="40" cols="60"></textarea>
-		<input class="ui-button ui-widget ui-corner-all"
-			style="position: fixed; top: 20px" id="翻译按钮" type="button" value="翻译">
+		<div style="float: left">
+			<textarea id="英文源码输入"></textarea>
+		</div>
+		<div style="float: left">
+			<textarea id="对应中文源码"></textarea>
+		</div>
+		<div style="float: left">
+			<input class="ui-button ui-widget ui-corner-all" style="float: left"
+				id="翻译按钮" type="button" value="翻译">
+		</div>
 	</div>
 </body>
+
+<script>
+	var 输入 = CodeMirror.fromTextArea(document.getElementById("英文源码输入"), {
+		mode : "text/x-java",
+		lineNumbers : true,
+		matchBrackets : true
+	});
+	var 输出 = CodeMirror.fromTextArea(document.getElementById("对应中文源码"), {
+		mode : "text/x-java",
+		lineNumbers : true,
+		matchBrackets : true
+	});
+	输入.setSize(500, 500);
+	输出.setSize(500, 500);
+</script>
 </html>
