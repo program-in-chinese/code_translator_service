@@ -18,7 +18,7 @@ public class 翻译控制器 {
 
   private static final Logger 笔录 = LoggerFactory.getLogger(翻译控制器.class);
 
-  @CrossOrigin(origins = "http://translate.codeinchinese.com:9000")
+  @CrossOrigin(origins = "http://translate.codeinchinese.com")
   @RequestMapping(value = "/", method = RequestMethod.POST)
   @ResponseBody
   public 翻译 翻译(@RequestParam(name = "code", required = false, defaultValue = "") String 英文源码) {
